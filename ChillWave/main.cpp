@@ -23,7 +23,7 @@ int main() {
     /*---------
     ENVIRONMENT
     ----------*/
-    scene::IMesh* envMesh = smgr->getMesh("assets/env/env.obj");
+    scene::IMesh* envMesh = smgr->getMesh("assets/world/world.obj");
     if (!envMesh)
         return -2;
 
@@ -31,6 +31,7 @@ int main() {
     env = smgr->addOctreeSceneNode(envMesh, 0, 1);
     envMesh->drop();
     env->setMaterialFlag(video::EMF_LIGHTING, true);
+    env->setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
     env->setScale(core::vector3df(1, 1, 1));
 
     scene::ITriangleSelector* selector = 0;
