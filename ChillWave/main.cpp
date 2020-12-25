@@ -25,7 +25,7 @@ int main() {
     /*---------
     ENVIRONMENT
     ----------*/
-    scene::IMesh* envMesh = smgr->getMesh("assets/world/world.obj");
+    scene::IMesh* envMesh = smgr->getMesh("assets/env/env.obj");
     if (!envMesh)
         return -2;
 
