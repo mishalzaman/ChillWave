@@ -2,6 +2,7 @@
 #include "G_EventManager.h"
 #include "G_IrrInit.h"
 #include "G_FPCamera.h"
+#include "G_Shader.h"
 
 using namespace irr;
 using namespace core;
@@ -19,19 +20,21 @@ int main() {
         return -1;
 
     scene::ISceneManager* smgr = device->getSceneManager();
+    G_Shader* shader = new G_Shader("shaders/opengl.vert", "shaders/opengl.frag", device, driver);
 
     /*---------
     ENVIRONMENT
     ----------*/
-    scene::IMesh* envMesh = smgr->getMesh("assets/env/env.obj");
+    scene::IMesh* envMesh = smgr->getMesh("assets/world/world.obj");
     if (!envMesh)
         return -2;
 
     scene::IMeshSceneNode* env = 0;
     env = smgr->addOctreeSceneNode(envMesh, 0, 1);
     envMesh->drop();
-    env->setMaterialFlag(video::EMF_LIGHTING, true);
+    env->setMaterialFlag(video::EMF_LIGHTING, false);
     env->setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
+    env->setMaterialType((video::E_MATERIAL_TYPE)shader->material1);
     env->setScale(core::vector3df(1, 1, 1));
 
     scene::ITriangleSelector* selector = 0;
@@ -74,6 +77,7 @@ int main() {
         }
     }
     
+    delete(shader);
     delete(camera);
     return 0;
 }

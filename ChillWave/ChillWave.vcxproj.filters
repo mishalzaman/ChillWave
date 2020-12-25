@@ -19,6 +19,9 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{757c6cc3-24f2-4f26-8a43-3d217b4dd932}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{a4a6fd16-f72a-4464-b432-e5909c36784e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -28,6 +31,9 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="G_FPCamera.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="G_Shader.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,5 +50,25 @@
     <ClInclude Include="G_FPCamera.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="G_Shader.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="U_ShaderUniformCallback_Type1.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\opengl.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\opengl.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\sky.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\sky.vert">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
