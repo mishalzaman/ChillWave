@@ -22,6 +22,9 @@ public:
 	void update(float dt);
 	
 	void recenterMouse(IrrlichtDevice* device);
+
+	// helpers
+	vector3df getPosition();
 private:
 	const float		  MOVEMENT_SPEED = 4.0;
 	const float		  MOUSE_SENSITIVITY = 4.0f;
@@ -31,7 +34,7 @@ private:
 	vector3df		  m_position = vector3df(0, 0, 0);
 	vector3df		  m_target = vector3df(0, 0, 0);
 	float			  m_yaw = -180.0f;
-	float			  m_pitch = 0.f;
+	float			  m_pitch = -20.f;
 	vector3df		  m_up = vector3df(0, 1.0, 0);
 	vector3df		  m_frontVector = vector3df(0, 0, 0);
 	vector3df		  m_rightVector = vector3df(0, 0, 0);

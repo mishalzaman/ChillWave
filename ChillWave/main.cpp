@@ -25,7 +25,7 @@ int main() {
     /*---------
     ENVIRONMENT
     ----------*/
-    scene::IMesh* envMesh = smgr->getMesh("assets/env/env.obj");
+    scene::IMesh* envMesh = smgr->getMesh("assets/world/world.obj");
     if (!envMesh)
         return -2;
 
@@ -34,6 +34,7 @@ int main() {
     envMesh->drop();
     env->setMaterialFlag(video::EMF_LIGHTING, false);
     env->setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
+    env->setMaterialFlag(video::EMF_ANISOTROPIC_FILTER, true);
     env->setMaterialType((video::E_MATERIAL_TYPE)shader->material1);
     env->setScale(core::vector3df(1, 1, 1));
 

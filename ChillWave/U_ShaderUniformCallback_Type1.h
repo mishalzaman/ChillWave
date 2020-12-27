@@ -49,6 +49,20 @@ public:
                 reinterpret_cast<f32*>(&col), 4);
 
         /*==============
+        LIGHT POSITION
+        ===============*/
+        core::vector3df lPos = core::vector3df(0.0f, 8.0f, 8.0f);
+        services->setVertexShaderConstant("lightPos",
+            reinterpret_cast<f32*>(&lPos), 3);
+
+        /*==============
+        OBJECT COLOUR
+        ===============*/
+        video::SColorf ocol(0.4f, 0.4f, 0.4f, 0.0f);
+        services->setVertexShaderConstant("objectColor",
+            reinterpret_cast<f32*>(&ocol), 4);
+
+        /*==============
         TRANSPOSED WORLD
         ===============*/
         core::matrix4 world = driver->getTransform(video::ETS_WORLD);

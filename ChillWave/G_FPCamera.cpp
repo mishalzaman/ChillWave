@@ -11,6 +11,7 @@ G_FPCamera::G_FPCamera(u32 screenW, u32 screenH, vector3df position, float yAngl
 
     /* Set camera position and target */
     m_camera = smgr->addCameraSceneNode();
+    m_camera->setFOV(0.8);
     m_yaw = yAngle;
 
     /* Set triangle selector for collision */
@@ -74,6 +75,11 @@ void G_FPCamera::view(float dt, int x, int y)
 void G_FPCamera::recenterMouse(IrrlichtDevice* device)
 {
     device->getCursorControl()->setPosition(m_mouseDefaultX, m_mouseDefaultY);
+}
+
+vector3df G_FPCamera::getPosition()
+{
+    return m_camera->getPosition();
 }
 
 void G_FPCamera::update(float dt)
