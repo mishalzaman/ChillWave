@@ -22,6 +22,12 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{a4a6fd16-f72a-4464-b432-e5909c36784e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="player">
+      <UniqueIdentifier>{0c04f4ff-a80d-47e0-9d3d-fead885f332f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene">
+      <UniqueIdentifier>{8f41e346-c7f7-4741-a23f-7417be26c2c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,6 +41,12 @@
     </ClCompile>
     <ClCompile Include="G_Shader.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PLR_Agent.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="SCN_Level.cpp">
+      <Filter>scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="U_ShaderUniformCallback_Type1.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="PLR_Agent.h">
+      <Filter>player</Filter>
+    </ClInclude>
+    <ClInclude Include="SCN_Level.h">
+      <Filter>scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

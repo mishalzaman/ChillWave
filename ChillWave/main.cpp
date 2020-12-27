@@ -1,8 +1,8 @@
 #include <irrlicht.h>
 #include "G_EventManager.h"
 #include "G_IrrInit.h"
-#include "G_FPCamera.h"
-#include "G_Shader.h"
+#include "SCN_Level.h"
+#include <string>
 
 using namespace irr;
 using namespace core;
@@ -19,58 +19,32 @@ int main() {
     if (!G_IrrInit::initialize(S_WIDTH, S_HEIGHT, device, driver, eventReceiver))
         return -1;
 
-    scene::ISceneManager* smgr = device->getSceneManager();
-    G_Shader* shader = new G_Shader("shaders/opengl.vert", "shaders/opengl.frag", device, driver);
+    SCN_Level* level = new SCN_Level(S_WIDTH, S_HEIGHT, device, driver);
 
-    /*---------
-    ENVIRONMENT
-    ----------*/
-    scene::IMesh* envMesh = smgr->getMesh("assets/world/world.obj");
-    if (!envMesh)
-        return -2;
-
-    scene::IMeshSceneNode* env = 0;
-    env = smgr->addOctreeSceneNode(envMesh, 0, 1);
-    envMesh->drop();
-    env->setMaterialFlag(video::EMF_LIGHTING, false);
-    env->setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
-    env->setMaterialFlag(video::EMF_ANISOTROPIC_FILTER, true);
-    env->setMaterialType((video::E_MATERIAL_TYPE)shader->material1);
-    env->setScale(core::vector3df(1, 1, 1));
-
-    scene::ITriangleSelector* selector = 0;
-    selector = smgr->createOctreeTriangleSelector(
-        env->getMesh(), env, 128);
-
-    /*---------
-    CAMERA
-    ----------*/
-    G_FPCamera* camera = new G_FPCamera(S_WIDTH, S_HEIGHT, vector3df(0, 4, 30), -180.0f, selector, smgr);
-
-    /*------------
-    LIGHT
-    ------------*/
-    scene::ILightSceneNode* light = smgr->addLightSceneNode();
-    light->setPosition(core::vector3df(0, 64, 32));
+    io::path environmentFilename = "assets/world/world.obj";
+    level->attacheEnvironment(environmentFilename);
+    level->attachCamera(vector3df(0, 4, 30), -180.0f);
+    level->attachPlayer(vector3df(0, 4, 30));
+    level->attachLight(vector3df(0, 64, 32));
+    level->resetView(device);
 
     float dt = 0.017f;
-
+    
     while (device->run() && !quit) {
         if (device->isWindowActive()) {
+            level->resetView(device);
+
             if (eventReceiver.isKeyPressed(KEY_ESCAPE)) { quit = true; }
-            if (eventReceiver.isKeyDown(KEY_KEY_W)) { camera->forward(dt); }
-            if (eventReceiver.isKeyDown(KEY_KEY_S)) { camera->reverse(dt); }
-            if (eventReceiver.isKeyDown(KEY_KEY_D)) { camera->strafeRight(dt); }
-            if (eventReceiver.isKeyDown(KEY_KEY_A)) { camera->strafeLeft(dt); }
+            if (eventReceiver.isKeyDown(KEY_KEY_W)) { level->moveForward(dt); }
+            if (eventReceiver.isKeyDown(KEY_KEY_S)) { level->moveBackward(dt); }
+            if (eventReceiver.isKeyDown(KEY_KEY_D)) { level->strafeRight(dt); }
+            if (eventReceiver.isKeyDown(KEY_KEY_A)) { level->strafeLeft(dt); }
 
-            camera->recenterMouse(device);
-
-            camera->view(dt, eventReceiver.mouse_x()+5, eventReceiver.mouse_y()+5);
-            camera->update(dt);
+            level->update(dt, eventReceiver.mouse_x() + 5, eventReceiver.mouse_y() + 5);
 
             driver->beginScene(true, true, video::SColor(255, 255, 100, 68));
 
-            smgr->drawAll(); 
+            level->render();
 
             driver->endScene();
 
@@ -78,7 +52,5 @@ int main() {
         }
     }
     
-    delete(shader);
-    delete(camera);
     return 0;
 }
