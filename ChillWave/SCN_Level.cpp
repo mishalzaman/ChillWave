@@ -5,7 +5,7 @@ SCN_Level::SCN_Level(u32 screenW, u32 screenH, IrrlichtDevice* device, IVideoDri
 	m_screenH(screenH)
 {
 	m_smgr = device->getSceneManager();
-    m_shader = new G_Shader("shaders/opengl.vert", "shaders/opengl.frag", device, driver);
+    m_shader = new M_ShaderGeneral("shaders/general.vert", "shaders/general.frag", device, driver);
 }
 
 SCN_Level::~SCN_Level()
@@ -24,7 +24,7 @@ void SCN_Level::attachPlayer(vector3df position)
 
 void SCN_Level::attacheEnvironment(io::path& filename)
 {
-    scene::IMesh* envMesh = m_smgr->getMesh("assets/world/world.obj");
+    scene::IMesh* envMesh = m_smgr->getMesh(filename);
     if (!envMesh)
         printf("ERROR::SCN_LEVEL::attacheEnvironment() Could not load mesh");
 

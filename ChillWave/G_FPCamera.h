@@ -23,6 +23,9 @@ public:
 	
 	void recenterMouse(IrrlichtDevice* device);
 
+	void activatePerspective(ISceneManager* smgr);
+	void activateOrtho(ISceneManager* smgr);
+
 	// helpers
 	vector3df getPosition();
 private:
@@ -30,7 +33,8 @@ private:
 	const float		  MOUSE_SENSITIVITY = 4.0f;
 
 	// Camera positioning
-	ICameraSceneNode* m_camera = 0;
+	ICameraSceneNode* m_camera_persp = 0;
+	ICameraSceneNode* m_camera_ortho = 0;
 	vector3df		  m_position = vector3df(0, 0, 0);
 	vector3df		  m_target = vector3df(0, 0, 0);
 	float			  m_yaw = -180.0f;

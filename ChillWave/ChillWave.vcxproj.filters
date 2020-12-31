@@ -19,14 +19,17 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{757c6cc3-24f2-4f26-8a43-3d217b4dd932}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shaders">
-      <UniqueIdentifier>{a4a6fd16-f72a-4464-b432-e5909c36784e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="player">
       <UniqueIdentifier>{0c04f4ff-a80d-47e0-9d3d-fead885f332f}</UniqueIdentifier>
     </Filter>
     <Filter Include="scene">
       <UniqueIdentifier>{8f41e346-c7f7-4741-a23f-7417be26c2c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="material">
+      <UniqueIdentifier>{f7ff0455-040c-4d7a-ac1d-8c819e81469a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="material\shaders">
+      <UniqueIdentifier>{a4a6fd16-f72a-4464-b432-e5909c36784e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,14 +42,14 @@
     <ClCompile Include="G_FPCamera.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="G_Shader.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="PLR_Agent.cpp">
       <Filter>player</Filter>
     </ClCompile>
     <ClCompile Include="SCN_Level.cpp">
       <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="M_ShaderGeneral.cpp">
+      <Filter>material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,31 +65,37 @@
     <ClInclude Include="G_FPCamera.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="G_Shader.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="U_ShaderUniformCallback_Type1.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="PLR_Agent.h">
       <Filter>player</Filter>
     </ClInclude>
     <ClInclude Include="SCN_Level.h">
       <Filter>scene</Filter>
     </ClInclude>
+    <ClInclude Include="M_ShaderGeneral.h">
+      <Filter>material</Filter>
+    </ClInclude>
+    <ClInclude Include="M_ShaderGeneralUniformCallback.h">
+      <Filter>material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\opengl.frag">
-      <Filter>shaders</Filter>
+      <Filter>material\shaders</Filter>
     </None>
     <None Include="shaders\opengl.vert">
-      <Filter>shaders</Filter>
+      <Filter>material\shaders</Filter>
     </None>
     <None Include="shaders\sky.frag">
-      <Filter>shaders</Filter>
+      <Filter>material\shaders</Filter>
     </None>
     <None Include="shaders\sky.vert">
-      <Filter>shaders</Filter>
+      <Filter>material\shaders</Filter>
+    </None>
+    <None Include="shaders\general.frag">
+      <Filter>material\shaders</Filter>
+    </None>
+    <None Include="shaders\general.vert">
+      <Filter>material\shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

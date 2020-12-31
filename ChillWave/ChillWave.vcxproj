@@ -145,7 +145,7 @@
     <ClCompile Include="G_EventManager.cpp" />
     <ClCompile Include="G_FPCamera.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="G_Shader.cpp" />
+    <ClCompile Include="M_ShaderGeneral.cpp" />
     <ClCompile Include="PLR_Agent.cpp" />
     <ClCompile Include="SCN_Level.cpp" />
   </ItemGroup>
@@ -153,13 +153,15 @@
     <ClInclude Include="G_EventManager.h" />
     <ClInclude Include="G_FPCamera.h" />
     <ClInclude Include="G_IrrInit.h" />
-    <ClInclude Include="G_Shader.h" />
+    <ClInclude Include="M_ShaderGeneral.h" />
+    <ClInclude Include="M_ShaderGeneralUniformCallback.h" />
     <ClInclude Include="PLR_Agent.h" />
     <ClInclude Include="SCN_Level.h" />
-    <ClInclude Include="U_ShaderUniformCallback_Type1.h" />
     <ClInclude Include="U_MathG.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\general.frag" />
+    <None Include="shaders\general.vert" />
     <None Include="shaders\opengl.frag" />
     <None Include="shaders\opengl.vert" />
     <None Include="shaders\sky.frag" />

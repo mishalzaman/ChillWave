@@ -2,7 +2,7 @@
 #define SCN_LEVEL_H
 
 #include <irrlicht.h>
-#include "G_Shader.h"
+#include "M_ShaderGeneral.h"
 #include "G_FPCamera.h"
 #include "PLR_Agent.h"
 
@@ -38,7 +38,7 @@ private:
 	ISceneManager*	   m_smgr = 0;
 	ITriangleSelector* m_selector = 0;
 	G_FPCamera*		   m_camera = 0;
-	G_Shader*		   m_shader = 0;
+	M_ShaderGeneral*		   m_shader = 0;
 	PLR_Agent*         m_player = 0;
 	ILightSceneNode*   m_light = 0;
 };

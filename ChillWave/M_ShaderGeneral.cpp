@@ -1,18 +1,18 @@
-#include "G_Shader.h"
+#include "M_ShaderGeneral.h" 
 
-G_Shader::G_Shader(io::path vsFileName, io::path fsFileName, irr::IrrlichtDevice* device, video::IVideoDriver* driver):
+M_ShaderGeneral::M_ShaderGeneral(io::path vsFileName, io::path fsFileName, irr::IrrlichtDevice* device, video::IVideoDriver* driver):
     vsFileName(vsFileName),
     fsFileName(fsFileName)
 {
-    this->load(device, driver);
-    this->material(device, driver);
+    load(device, driver);
+    createMaterial(device, driver);
 }
 
-G_Shader::~G_Shader()
+M_ShaderGeneral::~M_ShaderGeneral()
 {
 }
 
-void G_Shader::load(irr::IrrlichtDevice* device, video::IVideoDriver* driver)
+void M_ShaderGeneral::load(irr::IrrlichtDevice* device, video::IVideoDriver* driver)
 {
     if (!driver->queryFeature(video::EVDF_VERTEX_SHADER_3_0) &&
         !driver->queryFeature(video::EVDF_ARB_VERTEX_PROGRAM_1))
@@ -31,17 +31,17 @@ void G_Shader::load(irr::IrrlichtDevice* device, video::IVideoDriver* driver)
     }
 }
 
-void G_Shader::material(irr::IrrlichtDevice* device, video::IVideoDriver* driver)
+void M_ShaderGeneral::createMaterial(irr::IrrlichtDevice* device, video::IVideoDriver* driver)
 {
     video::IGPUProgrammingServices* gpu = driver->getGPUProgrammingServices();
 
-    U_ShaderUniformCallback_Type1* shaderCallback = new U_ShaderUniformCallback_Type1(device);
+    M_ShaderGeneralUniformCallback* shaderCallback = new M_ShaderGeneralUniformCallback(device);
 
     const video::E_GPU_SHADING_LANGUAGE shadingLanguage = video::EGSL_DEFAULT;
 
     this->material1 = gpu->addHighLevelShaderMaterialFromFiles(
-        this->vsFileName, "vertexMain", video::EVST_VS_4_1,
-        this->fsFileName, "pixelMain", video::EPST_PS_4_1,
+        this->vsFileName, "vertexMain", video::EVST_VS_1_1,
+        this->fsFileName, "pixelMain", video::EPST_PS_1_1,
         shaderCallback, video::EMT_SOLID, 0, shadingLanguage);
 
     shaderCallback->drop();

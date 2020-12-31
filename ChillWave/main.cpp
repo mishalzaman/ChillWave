@@ -1,3 +1,12 @@
+/*
+Game idea:
+
+Play as an art curator who looks after an art gallery.
+During a level segment, the player monster have been released and it is
+up to the player to use frames (or different sizes) to capture monsters.
+Then once captured, they need to put up the frames on the wall.
+*/
+
 #include <irrlicht.h>
 #include "G_EventManager.h"
 #include "G_IrrInit.h"
